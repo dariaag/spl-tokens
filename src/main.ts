@@ -86,11 +86,25 @@ run(dataSource, database, async (ctx) => {
         // instruction from this log
         console.log(log.instruction);
         // decoding here, after fixing typegen
-        /* let decoded_ins = tokenProgram.instructions.initializeMint.decode(
+        let decoded = tokenProgram.instructions.initializeMint.decode(
           log.instruction
-        ); */
+        );
+        console.log(decoded);
+        //decoded instruction example
+         /*  {
+        accounts: {
+          mint: '2yHG2HwZJMVwKG2UcMAxFtBMiKhJqqcDsvvpZFAnqMQn',
+          rent: 'SysvarRent111111111111111111111111111111111'
+        },
+        data: {
+          decimals: 4,
+          mintAuthority: 'EyqxZ5zTq4gPqG6AbRF4deeztTyeZQZPNfanb4gWd59v',
+          freezeAuthority: undefined
+        }
+      } */
 
         // after decoding, create an entity and save it to the database
+        
       }
     }
   }
