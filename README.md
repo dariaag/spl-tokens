@@ -34,16 +34,22 @@ while providing game changing performance over traditional RPC API.
 npm ci
 
 # Compile the project
-npx tsc
+sqd build
+
+# Generate IDL types
+sqd typegen
+
+# Generate schema types
+sqd codegen
 
 # Launch Postgres database to store the data
-docker compose up -d
+sqd up
 
 # Apply database migrations to create the target schema
-npx squid-typeorm-migration apply
+sqd migation:generate
 
 # Run indexer
-node -r dotenv/config lib/main.js
+sqd process
 
 # Checkout indexed swaps
 docker exec "$(basename "$(pwd)")-db-1" psql -U postgres \
